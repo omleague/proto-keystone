@@ -1,0 +1,15 @@
+superdoc_output: 'demo/build/PK0_SUPERDOC_demo.md'
+provenance_footer: true
+
+sections:
+  - heading: 'I. DEMO DOCS'
+    files:
+      - 'demo/README_demo.md'
+      - 'demo/Overview_demo.md'
+
+  - heading: 'II. DEMO CODE'
+    code_roots:
+      - 'demo/src'
+    exclude_globs:
+      - '**/__pycache__/*'
+      - '**/.venv/*'
