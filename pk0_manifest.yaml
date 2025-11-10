@@ -1,0 +1,37 @@
+# Canonical manifest for PK0 Superdoc (Human-first order)
+
+superdoc_output: 'build/PK0_SUPERDOC.md'
+provenance_footer: true
+
+sections:
+  - heading: 'I. FUNDAMENTALS (THE PUBLIC FACE)'
+    files:
+      - 'README.md'
+      - 'LICENSE.md'
+      - 'Trademarks.md'
+      - 'Om_League_OVERVIEW.md'
+      - 'Om_League_GLOSSARY.md'
+      - 'OmSpeak.md'
+
+  - heading: 'II. REBOOT SHEETS (THE DOCTRINE)'
+    files:
+      # (Add reboot addenda here when ready)
+
+  - heading: 'III. CODEX (THE LAW)'
+    files:
+      # (Add codex files here when ready)
+
+  - heading: 'IV. DIGESTS (THE NARRATIVE)'
+    files:
+      # (Add digest files here when ready)
+
+  - heading: 'V. NOTEBOOKS (THE LEDGER)'
+    files:
+      # (Add notebook files here when ready)
+
+  - heading: 'VI. CODE (THE BUILD)'
+    code_roots:
+      # e.g., 'src/'
+    exclude_globs:
+      - '**/__pycache__/*'
+      - '**/.venv/*'

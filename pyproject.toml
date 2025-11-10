@@ -1,0 +1,30 @@
+[project]
+name = "omleague-keystone"
+version = "0.1.0"
+description = "The cognitive memory architecture of the Om League."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE.md" }
+authors = [{ name = "Mike Hans", email = "mike@omleague.com" }]
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "ruff",
+    "mypy",
+    "pytest",
+    "pyyaml",
+    "pre-commit"
+]
+
+[tool.black]
+line-length = 100
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "W", "I"]
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
