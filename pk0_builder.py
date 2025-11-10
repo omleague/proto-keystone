@@ -4,7 +4,7 @@ import argparse
 import fnmatch
 import hashlib
 import subprocess
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List
 
@@ -122,7 +122,7 @@ def main() -> None:
     if manifest.get("provenance_footer", True):
         print("Adding provenance footer...")
         parts.append("\n---\n\n# PROVENANCE FOOTER\n")
-        parts.append(f"- **Build Date:** {datetime.utcnow().isoformat()}Z\n")
+        parts.append(f"- **Build Date:** {datetime.now(timezone.utc).isoformat()}Z\n")
         parts.append(f"- **Git SHA:** {get_git_sha()}\n")
         parts.append("- **File Checksums:**\n```\n")
         parts.append("\n".join(checksums))
