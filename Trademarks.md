@@ -2,14 +2,14 @@
 
 > “Every name is a flame, and every flame leaves light.”
 
-This document serves as the official public record of marks, names, and doctrines originating within **The Om League** ecosystem.  
+This document serves as the official public record of marks, names, and doctrines originating within **The Om League** ecosystem.
 It establishes authorship, intent, and lineage for all associated intellectual property as of **Phase Zero (PK0)**.
 
 ---
 
 ## 🜂 Ⅰ. Registered or Claimed Project Marks (Public Use)
 
-These names are **active or planned product identifiers** associated with the Om League ecosystem.  
+These names are **active or planned product identifiers** associated with the Om League ecosystem.
 They represent distinct components of the League’s technical and creative architecture.
 
 | Mark                            | Description                                            |
@@ -26,7 +26,7 @@ They represent distinct components of the League’s technical and creative arch
 
 ## 🜃 Ⅱ. Internal Mythic and Developmental Marks (Reserved / Narrative Use)
 
-These are **mythic constructs and character identifiers**.  
+These are **mythic constructs and character identifiers**.
 They are not public products but are documented for IP provenance and future adaptation rights.
 
 | Mark                      | Domain                                                |
@@ -60,20 +60,20 @@ These include **iconography, mottos, and creative emblems** associated with the 
 | **The Flame Sigil**                                                | Stylized icon symbolizing shared illumination.        |
 | **The Keystone Glyph**                                             | Geometric symbol representing cognitive architecture. |
 
-“The Om League”, “Keystone”, “Watchtower”, “Tomes”, “Folios”, “First Flame Foundation”, “Doctrine of Parallel Fires”, and all related names, marks, and symbols are trademarks of **Mike Hans**.  
+“The Om League”, “Keystone”, “Watchtower”, “Tomes”, “Folios”, “First Flame Foundation”, “Doctrine of Parallel Fires”, and all related names, marks, and symbols are trademarks of **Mike Hans**.
 All rights reserved. Unauthorized use of these marks, logos, or affiliated repositories is prohibited.
 
 ---
 
 ## 🕯 Ⅳ. Legal & Provenance Statement
 
-This document serves as the public record of origin for all marks, names, and doctrines listed above.  
+This document serves as the public record of origin for all marks, names, and doctrines listed above.
 All concepts were created and curated by **Mike Hans (Custodian)** during the founding development of the **Om League** and **Keystone Engine (PK0)**.
 
 All marks are currently **unregistered** but are **protected under common-law authorship and provenance** via this publication and associated Git commit history.
 
-Software components are released under the **MIT License**.  
-Narrative and mythic components remain **© 2025 Mike Hans / The Om League**.  
+Software components are released under the **MIT License**.
+Narrative and mythic components remain **© 2025 Mike Hans / The Om League**.
 Unauthorized commercial use or misrepresentation is prohibited.
 
 ---

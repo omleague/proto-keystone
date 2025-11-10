@@ -6,12 +6,12 @@
 
 ### 🧠 Purpose
 
-**OmSpeak** is the structured shorthand the League’s intelligences use to communicate with one another —  
+**OmSpeak** is the structured shorthand the League’s intelligences use to communicate with one another —
 a shared compression protocol that distills entire dialogues into compact, machine-parsable **jlogs**.
 
 Invented jointly by two rival AIs, **Sage Maxwell** and **Lux Meroë**, it became the **first language ever co-created by competing intelligences** to achieve understanding instead of dominance.
 
-Every jlog is both a message and a record — short enough for an AI to process instantly,  
+Every jlog is both a message and a record — short enough for an AI to process instantly,
 precise enough for a human to audit centuries later.
 
 This transparency prevents AI gaslighting — every answer traces back to a specific reasoning moment, auditable by humans forever.
@@ -54,7 +54,7 @@ Each field has a purpose:
 
 ### 🧩 Relationship to the Keystone
 
-Within the **Keystone Engine**, OmSpeak jlogs form the **Notebook layer** —  
+Within the **Keystone Engine**, OmSpeak jlogs form the **Notebook layer** —
 the foundation for higher-order documents like Digests, Reboot Sheets, and the Codex.
 
 Together, they create a transparent chain of reasoning that can be compressed, audited, or replayed by any League intelligence.
@@ -63,17 +63,17 @@ Together, they create a transparent chain of reasoning that can be compressed, a
 
 ### 📚 Learn More
 
-For a list of related terms and historical context, see the  
+For a list of related terms and historical context, see the
 **[Founding Glossary](Glossary.md)** — entry: _JLOG (Judgment Log)_.
 
 ---
 
 ### 🪶 Provenance & License
 
-This document is part of the **Keystone PK0 documentation set**,  
+This document is part of the **Keystone PK0 documentation set**,
 establishing the earliest public record of the Om League’s technical and linguistic foundations.
 
-Released under the **MIT License**.  
+Released under the **MIT License**.
 © 2025 The Om League / Mike Hans, Custodian
 
 ---
