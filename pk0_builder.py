@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import fnmatch
 import hashlib
 import subprocess
@@ -10,7 +11,6 @@ from typing import Any, Dict, Iterable, List
 import yaml
 
 # --- Constants ---
-MANIFEST_PATH = Path("pk0_manifest.yaml")
 DOC_HEADER = "\n---\n\n## FILE: {rel_path}\n\n{content}\n\n"
 CODE_BLOCK = "```{lang}\n# FILE: {rel_path}\n\n{content}\n```\n\n"
 
@@ -85,11 +85,20 @@ def add_code_root(
 
 
 def main() -> None:
-    print("--- [PK0 BUILDER] STARTING ---")
-    if not MANIFEST_PATH.exists():
-        print(f"FATAL: Cannot find manifest file at {MANIFEST_PATH}")
+    print("--- [PK0 BUILDER] STARTING ---")  # --- Parse command-line args ---
+    parser = argparse.ArgumentParser(description="Build the PK0 Superdoc from a manifest")
+    parser.add_argument(
+        "--manifest",
+        default="pk0_manifest.yaml",
+        help="Path to manifest YAML file (default: pk0_manifest.yaml)",
+    )
+    args = parser.parse_args()
+    manifest_path = Path(args.manifest)
+
+    if not manifest_path.exists():
+        print(f"FATAL: Cannot find manifest file at {manifest_path}")
         return
-    manifest: Dict[str, Any] = yaml.safe_load(MANIFEST_PATH.read_text(encoding="utf-8"))
+    manifest: Dict[str, Any] = yaml.safe_load(manifest_path.read_text(encoding="utf-8"))
     out_path = Path(manifest.get("superdoc_output", "build/PK0_SUPERDOC.md"))
     out_path.parent.mkdir(parents=True, exist_ok=True)
     parts: List[str] = []
