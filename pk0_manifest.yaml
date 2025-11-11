@@ -1,49 +1,44 @@
 # PK0 Manifest — Seven-Section Architecture (Final)
-superdoc_output: 'build/PK0_SUPERDOC.md'
+superdoc_output: 'build/PK0_SUPERDOC.txt'
 provenance_footer: true
 
 sections:
   - heading: 'I. FUNDAMENTALS (THE PUBLIC FACE)'
     doc_dirs:
-      - "G:/My Drive/THE_LEAGUE/OM LEAGUE DOCS"
+      - 'G:/My Drive/THE_LEAGUE/OM LEAGUE DOCS'
     doc_exts: ['.txt', '.md']
+    exclude_globs: ['**/__pycache__/*', '.git/*']
+
+  - heading: 'II. REBOOT SHEETS (THE DOCTRINE)'
+    doc_dirs:
+      - 'G:/My Drive/THE_LEAGUE/TEST - REBOOT'
+    doc_exts: ['.txt', '.md']
+    exclude_globs: ['**/__pycache__/*', '.git/*']
+
+  - heading: 'III. CODEX (THE LAW)'
+    doc_dirs:
+      - 'G:/My Drive/THE_LEAGUE/CODEX'
+    doc_exts: ['.txt', '.md']
+
+  - heading: 'IV. DIGESTS (THE NARRATIVE)'
+    doc_dirs:
+      - 'G:/My Drive/THE_LEAGUE/TEST - DIGESTS'
+    doc_exts: ['.txt', '.md']
+
+  - heading: 'V. NOTEBOOKS (THE LEDGER)'
+    doc_dirs:
+      - 'G:/My Drive/THE_LEAGUE/TEST - NOTEBOOKS'
+    doc_exts: ['.txt', '.md', '.json']   # allow json if you export jlogs
+
+  - heading: 'VII. SUPPLEMENTALS'
+    doc_dirs:
+      - 'G:/My Drive/THE_LEAGUE/TEST - SUPPLEMENTAL DOCS'
+    doc_exts: ['.txt', '.md']
+
+  - heading: 'VI. CODE (THE BUILD)'
+    # keep code flattening as-is for now
+    code_roots:
+      - 'code'
     exclude_globs:
       - '**/__pycache__/*'
       - '.git/*'
-
-  - heading: 'II. REBOOT SHEETS (THE DOCTRINE)'
-    files:
-      - 'docs/reboots/ADDENDUM_0001.md'
-      - 'docs/reboots/ADDENDUM_0002.md'
-
-
-  - heading: 'II. REBOOT SHEETS (THE DOCTRINE)'
-    files:
-      - 'docs/reboots/ADDENDUM_0001.md'
-      - 'docs/reboots/ADDENDUM_0002.md'
-
-  - heading: 'III. CODEX (THE LAW)'
-    files:
-      - 'docs/codex/CODEX_0001_Governance.md'
-      - 'docs/codex/CODEX_0002_Workflow.md'
-
-  - heading: 'IV. DIGESTS (THE NARRATIVE)'
-    files:
-      - 'docs/digests/DIGEST_0001.md'
-      - 'docs/digests/DIGEST_0002.md'
-
-  - heading: 'V. NOTEBOOKS (THE LEDGER)'
-    files:
-      - 'docs/notebooks/JLOG_0696.md'
-      - 'docs/notebooks/JLOG_0697.md'
-
-  - heading: 'VII. SUPPLEMENTALS'
-    files:
-      - 'docs/supplementals/Beatrice_Tragic_Gods.md'
-
-  - heading: 'VI. CODE (THE BUILD)'
-    files:
-      - 'code/pk0_builder_1.py'
-      - 'code/hello_1.py'
-    exclude_globs:
-      - '**/__pycache__/*'

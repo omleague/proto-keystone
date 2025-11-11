@@ -14,6 +14,63 @@ import yaml
 DOC_HEADER = "\n---\n\n## FILE: {rel_path}\n\n{content}\n\n"
 CODE_BLOCK = "```{lang}\n# FILE: {rel_path}\n\n{content}\n```\n\n"
 DEFAULT_DOC_EXTS = {".txt", ".md"}
+ALLOWED_CODE_EXTS = {
+    ".py",
+    ".js",
+    ".ts",
+    ".tsx",
+    ".jsx",
+    ".java",
+    ".kt",
+    ".go",
+    ".rs",
+    ".cpp",
+    ".c",
+    ".h",
+    ".cs",
+    ".php",
+    ".rb",
+    ".sql",
+    ".sh",
+    ".ps1",
+    ".toml",
+    ".yaml",
+    ".yml",
+    ".json",
+}
+
+
+def add_code_from_dir(
+    parts: List[str],
+    checksums: List[str],
+    dir_path: Path,
+    exclude_globs: Iterable[str],
+    allowed_exts: Iterable[str] | None = None,
+) -> None:
+    if not dir_path.exists():
+        print(f"  -> WARNING: Code dir not found, skipping: {dir_path}")
+        return
+
+    exts = set(allowed_exts or ALLOWED_CODE_EXTS)
+    candidates: List[Path] = []
+    for path in dir_path.rglob("*"):
+        if path.is_dir():
+            continue
+        if is_excluded(path, exclude_globs):
+            continue
+        if path.suffix.lower() in exts:
+            candidates.append(path)
+
+    for path in sorted(candidates, key=lambda p: p.as_posix()):
+        try:
+            content = path.read_text(encoding="utf-8")
+        except UnicodeDecodeError:
+            print(f"  -> NOTE: Skipping non-text/binary code file: {path}")
+            continue
+        rel_path = str(path.as_posix())
+        lang = language_for(path)
+        parts.append(CODE_BLOCK.format(lang=lang, rel_path=rel_path, content=content))
+        checksums.append(f"{sha256_file(path)}  {rel_path}")
 
 
 def add_docs_from_dir(
