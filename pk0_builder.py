@@ -46,6 +46,7 @@ def add_code_from_dir(
     dir_path: Path,
     exclude_globs: Iterable[str],
     allowed_exts: Iterable[str] | None = None,
+    seen_paths: set[str] | None = None,
 ) -> None:
     if not dir_path.exists():
         print(f"  -> WARNING: Code dir not found, skipping: {dir_path}")
@@ -62,12 +63,17 @@ def add_code_from_dir(
             candidates.append(path)
 
     for path in sorted(candidates, key=lambda p: p.as_posix()):
+        rel_path = path.as_posix()
+        if seen_paths is not None:
+            if rel_path in seen_paths:
+                print(f"  -> NOTE: Skipping duplicate: {rel_path}")
+                continue
+            seen_paths.add(rel_path)
         try:
             content = path.read_text(encoding="utf-8")
         except UnicodeDecodeError:
             print(f"  -> NOTE: Skipping non-text/binary code file: {path}")
             continue
-        rel_path = str(path.as_posix())
         lang = language_for(path)
         parts.append(CODE_BLOCK.format(lang=lang, rel_path=rel_path, content=content))
         checksums.append(f"{sha256_file(path)}  {rel_path}")
@@ -79,6 +85,7 @@ def add_docs_from_dir(
     dir_path: Path,
     exclude_globs: Iterable[str],
     allowed_exts: Iterable[str] | None = None,
+    seen_paths: set[str] | None = None,
 ) -> None:
     """Append all text-like docs from dir_path (recursively), ordered by path."""
     if not dir_path.exists():
@@ -91,22 +98,25 @@ def add_docs_from_dir(
     for path in dir_path.rglob("*"):
         if path.is_dir():
             continue
-        # skip excluded
         rel = path.as_posix()
-        if any(fnmatch.fnmatch(rel, pat) for pat in exclude_globs or []):
+        if any(fnmatch.fnmatch(rel, pat) for pat in (exclude_globs or [])):
             continue
-        # only allowed extensions
         if path.suffix.lower() not in exts:
             continue
         candidates.append(path)
 
     for path in sorted(candidates, key=lambda p: p.as_posix()):
+        rel_path = path.as_posix()
+        if seen_paths is not None:
+            if rel_path in seen_paths:
+                print(f"  -> NOTE: Skipping duplicate: {rel_path}")
+                continue
+            seen_paths.add(rel_path)
         try:
             content = path.read_text(encoding="utf-8")
         except UnicodeDecodeError:
             print(f"  -> NOTE: Skipping non-text file (cannot UTF-8 decode): {path}")
             continue
-        rel_path = path.as_posix()
         parts.append(DOC_HEADER.format(rel_path=rel_path, content=content))
         checksums.append(f"{sha256_file(path)}  {rel_path}")
 
@@ -201,6 +211,8 @@ def main() -> None:
     parts: List[str] = []
     checksums: List[str] = []
 
+    seen_paths: set[str] = set()
+
     parts.append("# OM LEAGUE — PK0 SUPERDOC\n\n")
 
     for section in manifest.get("sections", []):
@@ -221,9 +233,10 @@ def main() -> None:
             add_docs_from_dir(
                 parts,
                 checksums,
-                p,
+                Path(doc_dir_str),
                 section.get("exclude_globs", []) or [],
                 section.get("doc_exts"),
+                seen_paths,  # NEW
             )
 
         # Bucket mode for CODE: iterate directories listed under `code_dirs`
@@ -235,7 +248,8 @@ def main() -> None:
                 checksums,
                 p,
                 section.get("exclude_globs", []) or [],
-                section.get("code_exts"),  # optional override per-section
+                section.get("code_exts"),
+                seen_paths,  # NEW
             )
 
         # 3) Code flattening (unchanged)
