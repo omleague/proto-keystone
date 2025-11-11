@@ -226,6 +226,18 @@ def main() -> None:
                 section.get("doc_exts"),
             )
 
+        # Bucket mode for CODE: iterate directories listed under `code_dirs`
+        for code_dir_str in section.get("code_dirs", []) or []:
+            p = Path(code_dir_str)
+            print(f"  code_dir: {code_dir_str} (exists={p.exists()})")  # DEBUG
+            add_code_from_dir(
+                parts,
+                checksums,
+                p,
+                section.get("exclude_globs", []) or [],
+                section.get("code_exts"),  # optional override per-section
+            )
+
         # 3) Code flattening (unchanged)
         for code_root_str in section.get("code_roots", []) or []:
             add_code_root(

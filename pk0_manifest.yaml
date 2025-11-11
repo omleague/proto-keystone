@@ -30,15 +30,13 @@ sections:
       - 'G:/My Drive/THE_LEAGUE/TEST - NOTEBOOKS'
     doc_exts: ['.txt', '.md', '.json']   # allow json if you export jlogs
 
+  - heading: 'VI. CODE (THE BUILD)'
+    code_dirs:
+      - 'code'
+    exclude_globs:
+      - '**/__pycache__/*'
+
   - heading: 'VII. SUPPLEMENTALS'
     doc_dirs:
       - 'G:/My Drive/THE_LEAGUE/TEST - SUPPLEMENTAL DOCS'
     doc_exts: ['.txt', '.md']
-
-  - heading: 'VI. CODE (THE BUILD)'
-    # keep code flattening as-is for now
-    code_roots:
-      - 'code'
-    exclude_globs:
-      - '**/__pycache__/*'
-      - '.git/*'
