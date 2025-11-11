@@ -11,7 +11,7 @@ sections:
 
   - heading: 'II. REBOOT SHEETS (THE DOCTRINE)'
     doc_dirs:
-      - 'G:/My Drive/THE_LEAGUE/TEST - REBOOT'
+      - 'G:/My Drive/THE_LEAGUE/REBOOT'
     doc_exts: ['.txt', '.md']
     exclude_globs: ['**/__pycache__/*', '.git/*']
 
@@ -22,21 +22,25 @@ sections:
 
   - heading: 'IV. DIGESTS (THE NARRATIVE)'
     doc_dirs:
-      - 'G:/My Drive/THE_LEAGUE/TEST - DIGESTS'
+      - 'G:/My Drive/THE_LEAGUE/DIGESTS'
     doc_exts: ['.txt', '.md']
 
   - heading: 'V. NOTEBOOKS (THE LEDGER)'
     doc_dirs:
-      - 'G:/My Drive/THE_LEAGUE/TEST - NOTEBOOKS'
+      - 'G:/My Drive/THE_LEAGUE/NOTEBOOKS'
     doc_exts: ['.txt', '.md', '.json']   # allow json if you export jlogs
 
   - heading: 'VI. CODE (THE BUILD)'
     code_dirs:
-      - 'code'
+        - 'code'         # add more folders as needed, e.g. 'src', 'packages/api'
     exclude_globs:
-      - '**/__pycache__/*'
+        - '**/__pycache__/*'
+        - '.venv/*'
+        - '**/*.pyc'
+        # Optional: narrow to specific code types; omit to use defaults
+        # code_exts: ['.py', '.toml', '.json', '.yaml', '.yml']
 
   - heading: 'VII. SUPPLEMENTALS'
     doc_dirs:
-      - 'G:/My Drive/THE_LEAGUE/TEST - SUPPLEMENTAL DOCS'
+      - 'G:/My Drive/THE_LEAGUE/SUPPLEMENTAL DOCS'
     doc_exts: ['.txt', '.md']
