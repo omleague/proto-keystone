@@ -32,13 +32,19 @@ sections:
 
   - heading: 'VI. CODE (THE BUILD)'
     code_dirs:
-        - 'code'         # add more folders as needed, e.g. 'src', 'packages/api'
+      - '.'        # repo root — grabs pk0_builder.py, code/, demo/src/, etc.
+    #  - 'C:\Users/lilci/PyCharm/GM/gitmove_v1'
+    code_exts: ['.py', '.toml', '.yaml', '.yml']
     exclude_globs:
-        - '**/__pycache__/*'
-        - '.venv/*'
-        - '**/*.pyc'
-        # Optional: narrow to specific code types; omit to use defaults
-        # code_exts: ['.py', '.toml', '.json', '.yaml', '.yml']
+      - '**/__pycache__/*'
+      - '**/.pytest_cache/*'
+      - '**/.mypy_cache/*'
+      - '**/.ruff_cache/*'
+      - '**/*.pyc'
+      - '.git/*'
+      - '.venv/*'
+      - 'build/*'
+      - 'demo/build/*'
 
   - heading: 'VII. SUPPLEMENTALS'
     doc_dirs:
