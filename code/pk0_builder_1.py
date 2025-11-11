@@ -23,33 +23,29 @@ def add_docs_from_dir(
     exclude_globs: Iterable[str],
     allowed_exts: Iterable[str] | None = None,
 ) -> None:
-    """Append all text-like docs from dir_path (recursively), ordered by path."""
     if not dir_path.exists():
         print(f"  -> WARNING: Doc dir not found, skipping: {dir_path}")
         return
-
     exts = set(allowed_exts or DEFAULT_DOC_EXTS)
-
+    # Gather files recursively, filter by ext, exclude by globs,
+    # sort by path for deterministic order
     candidates: List[Path] = []
     for path in dir_path.rglob("*"):
         if path.is_dir():
             continue
-        # skip excluded
-        rel = path.as_posix()
-        if any(fnmatch.fnmatch(rel, pat) for pat in exclude_globs or []):
+        if is_excluded(path, exclude_globs):
             continue
-        # only allowed extensions
-        if path.suffix.lower() not in exts:
-            continue
-        candidates.append(path)
+        if path.suffix.lower() in exts:
+            candidates.append(path)
 
     for path in sorted(candidates, key=lambda p: p.as_posix()):
         try:
             content = path.read_text(encoding="utf-8")
         except UnicodeDecodeError:
+            # Non-text — skip (later we’ll wire in docx/pdf handlers)
             print(f"  -> NOTE: Skipping non-text file (cannot UTF-8 decode): {path}")
             continue
-        rel_path = path.as_posix()
+        rel_path = str(path.as_posix())
         parts.append(DOC_HEADER.format(rel_path=rel_path, content=content))
         checksums.append(f"{sha256_file(path)}  {rel_path}")
 
@@ -133,7 +129,6 @@ def main() -> None:
     )
     args = parser.parse_args()
     manifest_path = Path(args.manifest)
-    print(f"Using manifest: {manifest_path.resolve()}")
 
     if not manifest_path.exists():
         print(f"FATAL: Cannot find manifest file at {manifest_path}")
@@ -149,27 +144,24 @@ def main() -> None:
     for section in manifest.get("sections", []):
         heading = section.get("heading", "").strip()
         print(f"Processing Section: {heading or '(unnamed)'}")
-        print("  section keys:", list(section.keys()))  # DEBUG
         if heading:
             parts.append(f"# {heading}\n\n")
 
-        # 1) Explicit files (still supported)
+        # Existing explicit file listing (still works)
         for file_str in section.get("files", []) or []:
             add_doc_file(parts, checksums, file_str)
 
-        # 2) Bucket mode: iterate directories listed under `doc_dirs`
+        # --- NEW: Auto-include docs from directories (bucket mode) ---
         for doc_dir_str in section.get("doc_dirs", []) or []:
-            p = Path(doc_dir_str)
-            print(f"  doc_dir: {doc_dir_str} (exists={p.exists()})")  # DEBUG
             add_docs_from_dir(
                 parts,
                 checksums,
-                p,
+                Path(doc_dir_str),
                 section.get("exclude_globs", []) or [],
-                section.get("doc_exts"),
+                section.get("doc_exts"),  # optional override per-section
             )
 
-        # 3) Code flattening (unchanged)
+        # Existing code root logic (unchanged)
         for code_root_str in section.get("code_roots", []) or []:
             add_code_root(
                 parts, checksums, Path(code_root_str), section.get("exclude_globs", []) or []

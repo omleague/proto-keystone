@@ -1,37 +1,49 @@
-# Canonical manifest for PK0 Superdoc (Human-first order)
-
+# PK0 Manifest — Seven-Section Architecture (Final)
 superdoc_output: 'build/PK0_SUPERDOC.md'
 provenance_footer: true
 
 sections:
   - heading: 'I. FUNDAMENTALS (THE PUBLIC FACE)'
-    files:
-      - 'README.md'
-      - 'LICENSE.md'
-      - 'Trademarks.md'
-      - 'Om_League_OVERVIEW.md'
-      - 'Om_League_GLOSSARY.md'
-      - 'OmSpeak.md'
+    doc_dirs:
+      - "G:/My Drive/THE_LEAGUE/OM LEAGUE DOCS"
+    doc_exts: ['.txt', '.md']
+    exclude_globs:
+      - '**/__pycache__/*'
+      - '.git/*'
 
   - heading: 'II. REBOOT SHEETS (THE DOCTRINE)'
     files:
-      # (Add reboot addenda here when ready)
+      - 'docs/reboots/ADDENDUM_0001.md'
+      - 'docs/reboots/ADDENDUM_0002.md'
+
+
+  - heading: 'II. REBOOT SHEETS (THE DOCTRINE)'
+    files:
+      - 'docs/reboots/ADDENDUM_0001.md'
+      - 'docs/reboots/ADDENDUM_0002.md'
 
   - heading: 'III. CODEX (THE LAW)'
     files:
-      # (Add codex files here when ready)
+      - 'docs/codex/CODEX_0001_Governance.md'
+      - 'docs/codex/CODEX_0002_Workflow.md'
 
   - heading: 'IV. DIGESTS (THE NARRATIVE)'
     files:
-      # (Add digest files here when ready)
+      - 'docs/digests/DIGEST_0001.md'
+      - 'docs/digests/DIGEST_0002.md'
 
   - heading: 'V. NOTEBOOKS (THE LEDGER)'
     files:
-      # (Add notebook files here when ready)
+      - 'docs/notebooks/JLOG_0696.md'
+      - 'docs/notebooks/JLOG_0697.md'
+
+  - heading: 'VII. SUPPLEMENTALS'
+    files:
+      - 'docs/supplementals/Beatrice_Tragic_Gods.md'
 
   - heading: 'VI. CODE (THE BUILD)'
-    code_roots:
-      # e.g., 'src/'
+    files:
+      - 'code/pk0_builder_1.py'
+      - 'code/hello_1.py'
     exclude_globs:
       - '**/__pycache__/*'
-      - '**/.venv/*'
