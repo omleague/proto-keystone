@@ -32,7 +32,7 @@ sections:
 
   - heading: 'VI. CODE (THE BUILD)'
     code_dirs:
-      - 'C:/Users/lilci/PyCharm/OM_LEAGUE/proto-keystone/superdoc_code'   # repo root — correct for your layout
+      - '.'   # repo root — correct for your layout
     # You may add additional repos here later if desired
     code_exts: ['.py', '.toml', '.yaml', '.yml']
     exclude_globs:
