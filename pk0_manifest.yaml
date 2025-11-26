@@ -31,9 +31,9 @@ sections:
     doc_exts: ['.txt', '.md', '.json']   # allow json if you export jlogs
 
   - heading: 'VI. CODE (THE BUILD)'
-    code_dirs:
+    doc_dirs:
       - "C:/Users/lilci/PyCharm/proto-keystone/superdoc_code"
-    code_exts: ['.py', '.toml', '.yaml', '.yml']
+    doc_exts: ['.py', '.toml', '.yaml', '.yml']
     exclude_globs:
       - '**/__pycache__/*'
       - '**/.pytest_cache/*'
