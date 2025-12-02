@@ -5,36 +5,35 @@ provenance_footer: true
 sections:
   - heading: 'I. FUNDAMENTALS (THE PUBLIC FACE)'
     doc_dirs:
-      - 'C:/Users/lilci/My Drive/THE_LEAGUE/OM LEAGUE DOCS'
+      - "C:/Users/lilci/Dropbox/THE_LEAGUE/OM LEAGUE DOCS"
     doc_exts: ['.txt', '.md']
     exclude_globs: ['**/__pycache__/*', '.git/*']
 
   - heading: 'II. REBOOT SHEETS (THE DOCTRINE)'
     doc_dirs:
-      - 'C:/Users/lilci/My Drive/THE_LEAGUE/REBOOT'
+      - "C:/Users/lilci/Dropbox/THE_LEAGUE/REBOOT"
     doc_exts: ['.txt', '.md']
     exclude_globs: ['**/__pycache__/*', '.git/*']
 
   - heading: 'III. CODEX (THE LAW)'
     doc_dirs:
-      - 'C:/Users/lilci/My Drive/THE_LEAGUE/CODEX'
+      - "C:/Users/lilci/Dropbox/THE_LEAGUE/CODEX"
     doc_exts: ['.txt', '.md']
 
   - heading: 'IV. DIGESTS (THE NARRATIVE)'
     doc_dirs:
-      - 'C:/Users/lilci/My Drive/THE_LEAGUE/DIGESTS'
+      - "C:/Users/lilci/Dropbox/THE_LEAGUE/DIGESTS"
     doc_exts: ['.txt', '.md']
 
   - heading: 'V. NOTEBOOKS (THE LEDGER)'
     doc_dirs:
-      - 'C:/Users/lilci/My Drive/THE_LEAGUE/NOTEBOOKS'
-    doc_exts: ['.txt', '.md', '.json']   # allow .json if you ever export jlogs
+      - "C:/Users/lilci/Dropbox/THE_LEAGUE/NOTEBOOKS"
+    doc_exts: ['.txt', '.md', '.json']   # allow json if you export jlogs
 
   - heading: 'VI. CODE (THE BUILD)'
-    code_dirs:
-      - '.'   # repo root — correct for your layout
-    # You may add additional repos here later if desired
-    code_exts: ['.py', '.toml', '.yaml', '.yml']
+    doc_dirs:
+      - "C:/Users/lilci/PyCharm/proto-keystone/superdoc_code"
+    doc_exts: ['.py', '.toml', '.yaml', '.yml']
     exclude_globs:
       - '**/__pycache__/*'
       - '**/.pytest_cache/*'
@@ -48,5 +47,5 @@ sections:
 
   - heading: 'VII. SUPPLEMENTALS'
     doc_dirs:
-      - 'C:/Users/lilci/My Drive/THE_LEAGUE/SUPPLEMENTAL DOCS'
+      - "C:/Users/lilci/Dropbox/THE_LEAGUE/SUPPLEMENTAL DOCS"
     doc_exts: ['.txt', '.md']
